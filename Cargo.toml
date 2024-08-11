@@ -1,0 +1,23 @@
+[package]
+name = "can-motor-rs"
+version = "0.1.0"
+edition = "2021"
+
+[features]
+default = ["socketcan"]
+socketcan = ["dep:socketcan", "dep:tokio"]
+
+[dependencies]
+embedded-can = "0.4"
+futures-timer = "0.3"
+futures-util = "0.3"
+log = "0.4"
+socketcan = { version = "3.3", features = ["tokio"], optional = true }
+tokio = { version = "1", features = [
+    "macros",
+    "rt-multi-thread",
+], optional = true }
+
+[[bin]]
+name = "cybergear"
+path = "src/bin/cybergear_demo.rs"
